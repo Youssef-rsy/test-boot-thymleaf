@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"></link>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:include="menu"></div>
+<div class="container">
+	<div class="col-12">
+		<h2>Nouveau livre </h2>
+		<br/>
+	    <form th:action="@{/livre/editerLivre}" method="post" th:object="${livre}"> >
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Titre</label>
+			    <input  th:field="*{titre}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Titre"/>
+			  </div>
+			 <div class="form-group">
+			    <label for="exampleInputEmail1">Auteur</label>
+			    <input th:field="*{auteur}"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Auteur"/>
+			  </div>
+			
+			    <div class="form-group">
+			    <label for="exampleInputPassword1">Date edition</label>
+			    <input th:field="*{dateedtion}"  class="form-control" id="exampleInputPassword1" placeholder="Date d'edition"/>
+			  </div>
+			
+			   <div class="form-group">
+				  <label for="sel1">Approuver :</label>
+				  <select class="form-control" id="sel1" th:field="*{approve}" th:if="${livre.approve} == true">
+				 		
+					 	<option value="true" selected="selected">oui</option>
+					 	<option value="false">NON</option>
+					 	
+				  </select>
+				    <select class="form-control" id="sel1" th:field="*{approve}" th:if="${livre.approve} == false">
+				 		
+					 	<option value="false" selected="selected">non</option>
+					 	<option value="true">oui</option>
+					 	
+				  </select>
+				</div> 
+			  <div class="form-group">
+			    <label for="exampleFormControlTextarea1">Resumer</label>
+			    <textarea th:field="*{resumer}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			  </div>
+			  <input type="hidden" th:field="*{id}" value='${livre.approve}' /> 
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			  <button type="reset" class="btn btn-primary">reset</button>
+		</form>
+		</div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+</body>
+</html>
