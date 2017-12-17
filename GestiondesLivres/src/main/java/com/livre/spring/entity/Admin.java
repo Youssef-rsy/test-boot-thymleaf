@@ -3,6 +3,7 @@ package com.livre.spring.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ public class Admin {
 	private String nom;
 	private String prenon;
 	private boolean etatActive;
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Role> role;
 	public Admin() {
 		super();

@@ -1,27 +1,32 @@
 package com.livre.spring.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Columns;
+@Entity
 public class Role {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idRole;
 	private String roleName;
-	@ManyToOne
-	private Admin adm;
+	
 	public Role() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Role(long idRole, String roleName, Admin adm) {
+	public Role(long idRole, String roleName) {
 		super();
 		this.idRole = idRole;
 		this.roleName = roleName;
-		this.adm = adm;
 	}
-	public Role(String roleName, Admin adm) {
+	public Role(String roleName) {
 		super();
 		this.roleName = roleName;
-		this.adm = adm;
 	}
 	public long getIdRole() {
 		return idRole;
@@ -35,13 +40,6 @@ public class Role {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	public Admin getAdm() {
-		return adm;
-	}
-	public void setAdm(Admin adm) {
-		this.adm = adm;
-	}
-	
 	
 	
 }
